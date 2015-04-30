@@ -12,4 +12,12 @@
     <string name="o">Other features</string>
     <string name="save" />
     <string name="save1">Save</string>
+    <string name="title_activity_google_drive">GoogleDriveActivity</string>
+    <string name="title_activity_create_file">CreateFileActivity</string>
+    <string name="title_activity_api_client_async_task">ApiClientAsyncTask</string>
+    <string name="title_activity_display">DisplayActivity</string>
+    <string name="title_activity_retrieve_contents_with_progress">
+        RetrieveContentsWithProgressActivity
+    </string>
+    <string name="download_progress">Download Progress:</string>
 </resources>

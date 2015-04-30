@@ -2,6 +2,7 @@ package app.project.musicsheets;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,8 +14,10 @@ import android.widget.Toast;
 import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends GoogleDriveActivity implements View.OnClickListener {
     Button button2 = null;
 
     @Override
@@ -25,62 +28,20 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         button2.setOnClickListener(this);
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
 
-        // Check device for Play Services APK. If check succeeds, proceed with
-        //  GCM registration.
-        if (!checkPlayServices()){
-
-        }
-        else{
-            Toast.makeText(getApplicationContext(),
-                    "isGooglePlayServicesAvailable SUCCESS",
-                    Toast.LENGTH_LONG).show();
-        }
     }
 
-    /**
-     * Check the device to make sure it has the Google Play Services APK. If
-     * it doesn't, display a dialog that allows users to download the APK from
-     * the Google Play Store or enable it in the device's system settings.
-     */
-    private boolean checkPlayServices() {
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        if (resultCode != ConnectionResult.SUCCESS) {
-            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
-                        1).show();
-            } else {
-                //Log.i(TAG, "This device is not supported.");
-                finish();
-            }
-            return false;
-        }
-        return true;
-    }
-
-/*
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case PLAY_SERVICES_RESOLUTION_REQUEST:
-                if (resultCode == RESULT_CANCELED) {
-                    Toast.makeText(this, "Google Play Services must be installed.",
-                            Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-                return;
+    public void onClick(View v) {
+        if(v == button2) {
+            Intent intent = new Intent(this, ComposeActivity.class);
+            startActivity(intent);
         }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
-*/
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+
     }
 
     @Override
@@ -99,11 +60,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     @Override
-    public void onClick(View v) {
-        if(v == button2) {
-            Intent intent = new Intent(this, ComposeActivity.class);
-            startActivity(intent);
-        }
-
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_google_drive, menu);
+        return true;
     }
+
+
 }

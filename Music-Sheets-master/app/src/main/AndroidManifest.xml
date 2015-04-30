@@ -18,8 +18,39 @@
         </activity>
         <activity
             android:name=".ComposeActivity"
-            android:label="Compose Music">
-
+            android:label="Compose Music" >
+        </activity>
+        <activity
+            android:name=".GoogleDriveActivity"
+            android:label="@string/title_activity_google_drive" >
+        </activity>
+        <activity
+            android:name=".CreateFileActivity"
+            android:label="@string/title_activity_create_file"
+            android:parentActivityName=".ComposeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.project.musicsheets.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ApiClientAsyncTask"
+            android:label="@string/title_activity_api_client_async_task" >
+        </activity>
+        <activity
+            android:name=".DisplayActivity"
+            android:label="@string/title_activity_display"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.project.musicsheets.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RetrieveContentsWithProgressActivity"
+            android:label="@string/title_activity_retrieve_contents_with_progress"
+            android:parentActivityName=".DisplayActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="app.project.musicsheets.DisplayActivity" />
         </activity>
     </application>
 
